@@ -10,7 +10,9 @@ import {
     FaEnvelope,
     FaPhone,
     FaWhatsapp,
-    FaMapMarkerAlt
+    FaMapMarkerAlt,
+    FaFacebook,
+    FaInstagram
 } from "react-icons/fa";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
@@ -65,9 +67,11 @@ export default function Navbar() {
 
             {/* Mobile Drawer Menu */}
             <div
-                className={`lg:hidden fixed top-20 border-2 border-t-orange-500 right-0 h-screen w-full bg-white shadow-2xl z-50 transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
+                className={`lg:hidden fixed top-16 right-0 w-full bg-white z-50 transform transition-transform duration-500 ease-in-out
+        ${isOpen ? "translate-x-0" : "translate-x-full"}
+        h-[100dvh] overflow-y-auto pb-[env(safe-area-inset-bottom)]`}
             >
+
                 <div className="flex flex-col h-full p-4 space-y-2 text-lg overflow-y-auto">
                     {/* Navigation Links */}
                     <div className="space-y-4 border border-orange-200 rounded-xl p-4 bg-white shadow">
@@ -85,14 +89,13 @@ export default function Navbar() {
 
                         {/* Language Switcher */}
                         <div className="w-full flex justify-start ">
-                            <div className="border border-orange-300 scale-75 rounded-full -ml-4 px-6 py-1">
+                            <div className="border-2 border-orange-300 -ml-2 rounded-full px-6 py-1">
                                 <LanguageSwitcher />
                             </div>
                         </div>
                     </div>
 
-                    {/* Contact Info */}
-                    <div className="space-y-4 border border-orange-300 rounded-xl p-4 bg-orange-50 shadow text-gray-800">
+                    <div className="space-y-4 border scale-95 border-orange-300 rounded-xl p-4 bg-orange-50 shadow text-gray-800">
                         <h3 className="text-xl font-bold text-orange-500 mb-2">Contact</h3>
 
                         <div className="space-y-3">
@@ -135,6 +138,8 @@ export default function Navbar() {
                                 <span className="font-medium">Zall Herr, Albania</span>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
