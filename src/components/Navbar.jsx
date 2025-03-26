@@ -28,17 +28,18 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="bg-white text-gray-900 py-4 px-6 md:px-12 fixed w-full top-0 z-50 shadow-lg">
+        <nav className="bg-white text-gray-900 py-3 px-2 md:px-12 fixed w-full top-0 z-50 shadow-lg">
             <div className="mx-auto flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/">
+                <Link className="flex flex-row items-center space-x-2" to="/">
                     <h1 className="text-2xl md:text-3xl font-extrabold tracking-wider uppercase text-orange-500 hover:text-orange-400 transition-colors duration-200">
                         Bovilla Quads
                     </h1>
+                    <img src="/images/quad.png" className="invisible md:visible size-12" />
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center  text-lg">
+                <div className="hidden lg:flex items-center text-lg">
                     {navLinks.map((link) => (
                         <Link
                             key={link.to}
@@ -54,7 +55,7 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden text-2xl text-orange-500 focus:outline-none"
+                    className="lg:hidden text-2xl text-orange-500 focus:outline-none"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -64,7 +65,7 @@ export default function Navbar() {
 
             {/* Mobile Drawer Menu */}
             <div
-                className={`md:hidden fixed top-16 right-0 h-screen w-full bg-white shadow-2xl z-50 transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+                className={`lg:hidden fixed top-20 border-2 border-t-orange-500 right-0 h-screen w-full bg-white shadow-2xl z-50 transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
                     }`}
             >
                 <div className="flex flex-col h-full p-4 space-y-2 text-lg overflow-y-auto">

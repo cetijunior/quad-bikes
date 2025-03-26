@@ -7,15 +7,15 @@ import {
 } from "react-icons/fa";
 
 import Lightbox from "yet-another-react-lightbox";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 
 // Sample Images
 const trailImages = [
-    { src: "/images/trail1.png", alt: "Trail 1" },
+    { src: "/images/group.png", alt: "Group" },
     { src: "/images/trail2.png", alt: "Trail 2" },
+    { src: "/images/trail1.png", alt: "Trail 1" },
 ];
 
 const bovillaImages = [
