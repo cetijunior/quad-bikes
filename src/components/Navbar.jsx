@@ -21,6 +21,13 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { t } = useTranslation();
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
     const navLinks = [
         { to: "/", text: t("navbar.home"), icon: <FaHome /> },
         { to: "/booking", text: t("navbar.booking"), icon: <FaCalendarAlt /> },
@@ -33,7 +40,7 @@ export default function Navbar() {
         <nav className="bg-white text-gray-900 py-3 px-2 md:px-12 fixed w-full top-0 z-50 shadow-lg">
             <div className="mx-auto flex justify-between items-center">
                 {/* Logo */}
-                <Link className="flex flex-row items-center space-x-2" to="/">
+                <Link onClick={scrollToTop} className="flex flex-row items-center space-x-2" to="/">
                     <h1 className="text-2xl ml-2 md:text-3xl font-extrabold tracking-wider uppercase text-orange-500 hover:text-orange-400 transition-colors duration-200">
                         Bovilla Quads
                     </h1>
@@ -46,6 +53,7 @@ export default function Navbar() {
                         <Link
                             key={link.to}
                             to={link.to}
+                            onClick={scrollToTop}
                             className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200 relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-orange-500 after:bottom-0 after:left-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
                         >
                             <span className="text-xl">{link.icon}</span>
