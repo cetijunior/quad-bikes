@@ -1,285 +1,123 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaUser, FaEnvelope, FaPhone, FaCalendar, FaClock, FaMotorcycle, FaHourglassHalf, FaStickyNote } from "react-icons/fa";
+import React from "react";
+import { FaUser, FaEnvelope, FaPhone, FaCalendar, FaClock, FaMapMarkerAlt, FaCheck } from "react-icons/fa";
 
-const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-const staggerChildren = {
-    visible: { transition: { staggerChildren: 0.2 } },
-};
-
-export default function Booking() {
-    const [form, setForm] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        date: "",
-        time: "",
-        bikes: "1",
-        duration: "1 hour",
-        note: "",
-    });
-
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    const createMailToLink = () => {
-        const body = `
-Booking Request:
-
-Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Date: ${form.date}
-Time: ${form.time}
-Number of Bikes: ${form.bikes}
-Duration: ${form.duration}
-Note: ${form.note || "N/A"}
-    `.trim();
-
-        return `mailto:bsncetijunior@gmail.com?subject=Quad Bike Booking&body=${encodeURIComponent(body)}`;
-    };
-
+export default function BookingForm() {
     return (
-        <div className="bg-gradient-to-br from-orange-50 to-white mt-10 min-h-screen py-16">
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerChildren}
-                className="container mx-auto px-4 max-w-5xl"
-            >
-                {/* Header Section */}
-                <motion.div
-                    variants={fadeInUp}
-                    className="text-center mb-12 bg-white rounded-xl shadow-lg p-8"
-                >
-                    <h1 className="text-4xl md:text-6xl font-extrabold uppercase text-orange-500 tracking-tight">
-                        Book Your Adventure
-                    </h1>
-                    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-                        Embark on an exhilarating quad bike experience. Fill out the details below and get ready for an unforgettable ride!
+        <div className="min-h-screen bg-blue-900 mt-20 py-12 px-4 md:px-8">
+            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-10">
+                <div className="text-center">
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-800">Book Your Adventure</h1>
+                    <p className="text-gray-600 mt-3">
+                        Select your preferred date, time, and package from quad biking through Albania's landscapes.
                     </p>
-                </motion.div>
+                </div>
 
-                {/* Form Section */}
-                <motion.div
-                    variants={staggerChildren}
-                    className="grid md:grid-cols-2 gap-8"
-                >
-                    {/* Form Details Column */}
-                    <motion.div
-                        variants={fadeInUp}
-                        className="bg-white rounded-xl shadow-lg p-8 space-y-6"
-                    >
-                        <form className="space-y-6">
-                            {/* Personal Information Section */}
-                            <div className="space-y-4">
-                                <h2 className="text-2xl font-bold text-orange-500 border-b pb-2">
-                                    Personal Details
-                                </h2>
-                                <motion.div variants={fadeInUp}>
-                                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                        <FaUser className="text-orange-500" /> Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={form.name}
-                                        onChange={handleChange}
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                        placeholder="Your Full Name"
-                                        required
-                                    />
-                                </motion.div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Personal Details */}
+                    <div className="space-y-6">
+                        <h2 className="text-lg font-semibold text-gray-700 flex items-center">
+                            <FaUser className="mr-2 text-blue-500" /> Personal Details
+                        </h2>
 
-                                <motion.div variants={fadeInUp}>
-                                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                        <FaEnvelope className="text-orange-500" /> Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={form.email}
-                                        onChange={handleChange}
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                        placeholder="Your Email Address"
-                                        required
-                                    />
-                                </motion.div>
+                        <InputField label="Full Name" placeholder="John Smith" icon={FaUser} />
+                        <InputField label="Email Address" placeholder="your@email.com" icon={FaEnvelope} />
+                        <InputField label="Phone Number" placeholder="+355 69 XXX XXXX" icon={FaPhone} />
+                    </div>
 
-                                <motion.div variants={fadeInUp}>
-                                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                        <FaPhone className="text-orange-500" /> Phone
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        value={form.phone}
-                                        onChange={handleChange}
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                        placeholder="+355 69 444 5555"
-                                        required
-                                    />
-                                </motion.div>
-                            </div>
+                    {/* Tour Selection */}
+                    <div className="space-y-6">
+                        <h2 className="text-lg font-semibold text-gray-700 flex items-center">
+                            <FaMapMarkerAlt className="mr-2 text-blue-500" /> Tour Details
+                        </h2>
 
-                            {/* Booking Details Section */}
-                            <div className="space-y-4">
-                                <h2 className="text-2xl font-bold text-orange-500 border-b pb-2">
-                                    Booking Information
-                                </h2>
-                                <motion.div
-                                    variants={fadeInUp}
-                                    className="grid sm:grid-cols-2 gap-4"
-                                >
-                                    <div>
-                                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                            <FaCalendar className="text-orange-500" /> Date
-                                        </label>
-                                        <input
-                                            type="date"
-                                            name="date"
-                                            value={form.date}
-                                            onChange={handleChange}
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                            <FaClock className="text-orange-500" /> Time
-                                        </label>
-                                        <input
-                                            type="time"
-                                            name="time"
-                                            value={form.time}
-                                            onChange={handleChange}
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                            required
-                                        />
-                                    </div>
-                                </motion.div>
+                        <InputField type="date" label="Date" icon={FaCalendar} />
+                        <InputField type="time" label="Time" icon={FaClock} />
 
-                                <motion.div
-                                    variants={fadeInUp}
-                                    className="grid sm:grid-cols-2 gap-4"
-                                >
-                                    <div>
-                                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                            <FaMotorcycle className="text-orange-500" /> Number of Bikes
-                                        </label>
-                                        <select
-                                            name="bikes"
-                                            value={form.bikes}
-                                            onChange={handleChange}
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                        >
-                                            {[1, 2, 3, 4, 5].map((n) => (
-                                                <option key={n} value={n}>
-                                                    {n} {n === 1 ? "Bike" : "Bikes"}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                            <FaHourglassHalf className="text-orange-500" /> Duration
-                                        </label>
-                                        <select
-                                            name="duration"
-                                            value={form.duration}
-                                            onChange={handleChange}
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                        >
-                                            <option value="1 hour">1 Hour</option>
-                                            <option value="2 hours">2 Hours</option>
-                                            <option value="Half Day">Half Day</option>
-                                            <option value="Full Day">Full Day</option>
-                                        </select>
-                                    </div>
-                                </motion.div>
-                            </div>
+                        <div>
+                            <label className="text-sm font-medium text-gray-600">Location</label>
+                            <select className="w-full p-3 rounded-lg border border-gray-300 bg-gray-50 mt-1">
+                                <option>Bovilla Lake Trail</option>
+                                <option>Mountain Adventure</option>
+                            </select>
+                        </div>
 
-                            {/* Additional Notes Section */}
-                            <div className="space-y-4">
-                                <h2 className="text-2xl font-bold text-orange-500 border-b pb-2">
-                                    Additional Information
-                                </h2>
-                                <motion.div variants={fadeInUp}>
-                                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-1">
-                                        <FaStickyNote className="text-orange-500" /> Optional Note
-                                    </label>
-                                    <textarea
-                                        name="note"
-                                        rows="4"
-                                        value={form.note}
-                                        onChange={handleChange}
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 bg-gray-50 shadow-sm"
-                                        placeholder="Anything we should know? Special requests?"
-                                    />
-                                </motion.div>
-                            </div>
-                        </form>
-                    </motion.div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <select className="w-full p-3 rounded-lg border border-gray-300 bg-gray-50">
+                                <option>1 Quad</option>
+                                <option>2 Quads</option>
+                                <option>3 Quads</option>
+                            </select>
+                            <select className="w-full p-3 rounded-lg border border-gray-300 bg-gray-50">
+                                <option>1 Hour</option>
+                                <option>2 Hours</option>
+                                <option>Half Day</option>
+                            </select>
+                        </div>
 
-                    {/* Booking Information Sidebar */}
-                    <motion.div
-                        variants={fadeInUp}
-                        className="lg:col-span-1"
-                    >
-                        <motion.div
-                            variants={fadeInUp}
-                            className="bg-white sticky top-20 rounded-xl shadow-lg p-8 flex flex-col justify-between max-h-[90vh] overflow-auto"
-                        >
-                            <div>
-                                <h2 className="text-3xl font-bold text-orange-500 mb-6">
-                                    Booking Details
-                                </h2>
-                                <div className="space-y-4 text-gray-700">
-                                    <div className="bg-orange-50 p-4 rounded-lg">
-                                        <h3 className="font-semibold text-orange-600 mb-2">
-                                            What to Expect
-                                        </h3>
-                                        <ul className="list-disc list-inside text-sm">
-                                            <li>Professional quad bikes</li>
-                                            <li>Safety equipment provided</li>
-                                            <li>Guided tours available</li>
-                                            <li>Suitable for all experience levels</li>
-                                        </ul>
-                                    </div>
+                        <textarea
+                            rows="3"
+                            placeholder="Any special requirements or questions?"
+                            className="w-full p-3 rounded-lg border border-gray-300 bg-gray-50 mt-2"
+                        />
+                    </div>
+                </div>
 
-                                    <div className="bg-orange-50 p-4 rounded-lg">
-                                        <h3 className="font-semibold text-orange-600 mb-2">
-                                            Booking Confirmation
-                                        </h3>
-                                        <p className="text-sm">
-                                            After submitting, we'll confirm your booking via email or WhatsApp within 24 hours.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                {/* Summary & Inclusions */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+                    <div className="bg-blue-50 rounded-xl p-6 space-y-2">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Your Selection</h3>
+                        <div className="flex justify-between text-sm text-gray-700"><span>Date:</span><span>Thursday, May 23</span></div>
+                        <div className="flex justify-between text-sm text-gray-700"><span>Time:</span><span>10:00 AM</span></div>
+                        <div className="flex justify-between text-sm text-gray-700"><span>Location:</span><span>Bovilla Lake Trail</span></div>
+                        <div className="flex justify-between text-sm text-gray-700"><span>Quads:</span><span>1</span></div>
+                        <div className="flex justify-between text-sm text-gray-700"><span>Duration:</span><span>1 Hour</span></div>
+                        <div className="flex justify-between text-sm font-bold pt-2 border-t border-blue-100"><span>Estimated Price:</span><span>€45</span></div>
+                    </div>
 
-                            {/* Submit Button */}
-                            <motion.div variants={fadeInUp} className="mt-6">
-                                <a
-                                    href={createMailToLink()}
-                                    className="block text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-full uppercase text-lg shadow-xl transform hover:scale-105 transition-all duration-300"
-                                >
-                                    Submit Booking
-                                </a>
-                                <p className="text-center text-sm text-gray-500 mt-4">
-                                    Need help? <a href="https://wa.me/355694445555" className="text-orange-500 hover:text-orange-400 font-semibold">Chat with us</a>
-                                </p>
-                            </motion.div>
-                        </motion.div>
-                    </motion.div>
+                    <div className="bg-blue-50 rounded-xl p-6 space-y-3">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">What's Included</h3>
+                        {[
+                            "Professional quad bikes with safety features",
+                            "Complete safety gear",
+                            "Expert guide with local knowledge",
+                            "Brief training session for beginners",
+                            "Photo stops at scenic viewpoints"
+                        ].map((item, i) => (
+                            <p key={i} className="flex items-start text-sm text-gray-700">
+                                <FaCheck className="text-green-500 mt-1 mr-2" /> {item}
+                            </p>
+                        ))}
+                    </div>
+                </div>
 
-                </motion.div>
-            </motion.div>
+                {/* CTA */}
+                <div className="flex items-center space-x-2 pt-6">
+                    <input type="checkbox" className="h-4 w-4 text-blue-600" />
+                    <p className="text-sm text-gray-600">
+                        I agree to the <a href="#" className="text-blue-600 underline">terms & conditions</a>
+                    </p>
+                </div>
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg font-semibold mt-4 shadow-lg transition">
+                    Complete Booking
+                </button>
+            </div>
         </div>
     );
 }
+
+// Input component
+const InputField = ({ label, placeholder, icon: Icon, type = "text" }) => (
+    <div>
+        <label className="text-sm font-medium text-gray-600">{label}</label>
+        <div className="relative mt-1">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                <Icon />
+            </div>
+            <input
+                type={type}
+                placeholder={placeholder}
+                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+            />
+        </div>
+    </div>
+);

@@ -7,7 +7,8 @@ import {
     FaSun,
     FaStar,
     FaMapMarkedAlt,
-    FaImage
+    FaInfoCircle,
+    FaMoneyBillWave
 } from "react-icons/fa";
 
 const fadeInUp = {
@@ -22,38 +23,23 @@ const staggerChildren = {
 export default function DealsSection() {
     const deals = [
         {
-            title: "Duo Package",
-            desc: "2 Bikes for 1 Hour + Guide",
-            price: "€40",
+            title: "Duo Ride",
+            desc: "2 Individual Bikes – 1 Hour Ride with Guide",
             icon: FaBiking,
-            features: [
-                "1-Hour Adventure",
-                "Professional Guide",
-                "Beginner Friendly"
-            ]
+            features: ["Protective Gear", "Beginner Friendly", "Off-Road Trails"],
         },
         {
-            title: "Family Adventure",
-            desc: "4 Bikes for 2 Hours + Free GoPro",
-            price: "€90",
+            title: "Family Ride",
+            desc: "4 Bikes – 2 Hour Ride + GoPro Included",
             bestValue: true,
             icon: FaUsers,
-            features: [
-                "2-Hour Experience",
-                "Free GoPro Rental",
-                "Group Discount"
-            ]
+            features: ["Extended Trails", "Group Discount", "Free GoPro Recording"],
         },
         {
             title: "Sunset Ride",
-            desc: "Evening Ride + Drone Shots",
-            price: "€60",
+            desc: "Golden Hour Ride with Drone Footage",
             icon: FaSun,
-            features: [
-                "Scenic Evening Route",
-                "Professional Drone Footage",
-                "Unique Photo Package"
-            ]
+            features: ["Evening Schedule", "Professional Drone Footage", "Romantic Views"],
         },
     ];
 
@@ -63,37 +49,38 @@ export default function DealsSection() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerChildren}
-            className="py-20 px-4 md:px-16 bg-gray-50"
+            className="py-20 px-6 md:px-16 bg-gradient-to-b from-blue-900 via-black to-black text-white"
         >
             <motion.h2
                 variants={fadeInUp}
-                className="text-4xl font-bold mb-12 text-center uppercase text-orange-500 flex justify-center items-center"
+                className="text-4xl font-bold mb-12 text-center uppercase text-cyan-600 flex justify-center items-center"
             >
                 <FaMapMarkedAlt className="mr-4 text-3xl" />
-                Ride Deals
+                Ride Packages
             </motion.h2>
+
             <motion.div
                 variants={staggerChildren}
                 className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
             >
                 {deals.map((deal, index) => {
-                    const DealIcon = deal.icon;
+                    const Icon = deal.icon;
                     return (
                         <motion.div
                             key={index}
                             variants={fadeInUp}
-                            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                            className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group border border-blue-100"
                         >
                             {deal.bestValue && (
-                                <span className="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">
+                                <span className="absolute top-0 right-0 bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">
                                     Best Value
                                 </span>
                             )}
 
-                            <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
 
                             <div className="flex items-center mb-4">
-                                <DealIcon className="text-4xl text-orange-500 mr-4" />
+                                <Icon className="text-4xl text-cyan-600 mr-4" />
                                 <h3 className="text-2xl font-bold text-gray-800">{deal.title}</h3>
                             </div>
 
@@ -101,20 +88,17 @@ export default function DealsSection() {
 
                             <div className="mb-4">
                                 {deal.features.map((feature, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="flex items-center text-gray-700 mb-2"
-                                    >
-                                        <FaStar className="text-orange-400 mr-2 text-sm" />
+                                    <div key={idx} className="flex items-center text-gray-700 mb-2">
+                                        <FaStar className="text-cyan-400 mr-2 text-sm" />
                                         <span className="text-sm">{feature}</span>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="flex justify-between items-center mt-6">
-                                <p className="text-3xl font-bold text-orange-500">{deal.price}</p>
+                                <p className="text-2xl font-bold text-cyan-600">€50 / Rider</p>
                                 <Link to="/booking">
-                                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm uppercase transition-colors">
+                                    <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-full text-sm uppercase transition-colors">
                                         Book Now
                                     </button>
                                 </Link>
@@ -124,13 +108,39 @@ export default function DealsSection() {
                 })}
             </motion.div>
 
+            {/* Age & Disclaimer Info */}
             <motion.div
                 variants={fadeInUp}
-                className="text-center mt-12 group"
+                className="mt-16 max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-6 border border-blue-100"
             >
+                <div className="flex items-center text-cyan-600 text-lg font-bold mb-2">
+                    <FaInfoCircle className="mr-2" />
+                    Age Requirements
+                </div>
+                <ul className="text-gray-700 space-y-2 text-sm pl-4 list-disc">
+                    <li><strong>Kids:</strong> 7–14 (Must ride with adult supervision)</li>
+                    <li><strong>Teens:</strong> 15–17 (Guardian signature required)</li>
+                    <li><strong>Adults:</strong> 18+ (Solo ride eligible)</li>
+                </ul>
+
+                <div className="flex items-center text-cyan-600 text-lg font-bold mt-6 mb-2">
+                    <FaMoneyBillWave className="mr-2" />
+                    Booking & Payment Notes
+                </div>
+                <ul className="text-gray-700 space-y-2 text-sm pl-4 list-disc">
+                    <li>Booking must be made in advance</li>
+                    <li>Pickup point is private – shared **after confirmation** only</li>
+                    <li>Do **not** drive to the site uninvited – no direct entry allowed</li>
+                    <li>No deposit needed – **Cash payment on location**</li>
+                    <li>Walk-ins are not accepted</li>
+                </ul>
+            </motion.div>
+
+            {/* CTA Button */}
+            <motion.div variants={fadeInUp} className="text-center mt-12 group">
                 <Link to="/booking">
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-full uppercase shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto space-x-3">
-                        <span>Snag a Deal</span>
+                    <button className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-10 py-4 rounded-full uppercase shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto space-x-3">
+                        <span>Book Your Adventure</span>
                         <span className="group-hover:translate-x-2 transition-transform">→</span>
                     </button>
                 </Link>

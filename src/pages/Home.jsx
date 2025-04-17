@@ -12,9 +12,9 @@ export default function Home() {
     return (
         <div className="bg-white text-gray-900 overflow-hidden">
             <HeroSection />
-            <GalleryPreview />
-            <AboutPreview />
+            {/* <GalleryPreview /> */}
             {/* <ReviewsPreview /> */}
+            <AboutPreview />
             <DealsSection />
             <GroupPromo />
             <ContactPreview />
