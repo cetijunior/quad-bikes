@@ -3,7 +3,7 @@ import { FaUser, FaEnvelope, FaPhone, FaCalendar, FaClock, FaMapMarkerAlt, FaChe
 
 export default function BookingForm() {
     return (
-        <div className="min-h-screen bg-blue-900 mt-20 py-12 px-4 md:px-8">
+        <div className="min-h-screen bg-blue-900 pt-24 py-12 px-4 md:px-8">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-10">
                 <div className="text-center">
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-800">Book Your Adventure</h1>
