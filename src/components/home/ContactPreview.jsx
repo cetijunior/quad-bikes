@@ -25,12 +25,12 @@ export default function ContactPreview() {
         {
             icon: <FaWhatsapp className="text-cyan-500 text-2xl" />,
             text: "WhatsApp",
-            href: "https://wa.me/355694445555",
+            href: "https://wa.me/355685776981",
         },
         {
             icon: <FaPhoneAlt className="text-cyan-500 text-2xl" />,
             text: "Call Us",
-            href: "tel:+355694445555",
+            href: "tel:+355685776981",
         },
         {
             icon: <FaEnvelope className="text-cyan-500 text-2xl" />,
@@ -97,19 +97,19 @@ export default function ContactPreview() {
                     className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12"
                 >
                     <a
-                        href="/booking"
+                        href="/contact"
                         className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold px-8 py-3 rounded-lg shadow-lg flex items-center justify-center space-x-2 transition-all duration-300 hover:shadow-md"
                     >
                         <FaCalendarAlt />
                         <span>Book Your Adventure</span>
                     </a>
-                    <a
+                    {/* <a
                         href="/contact"
                         className="bg-white border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-50 font-bold px-8 py-3 rounded-lg shadow-md flex items-center justify-center space-x-2 transition-all duration-300"
                     >
                         <FaEnvelope />
                         <span>Contact Us</span>
-                    </a>
+                    </a> */}
                 </motion.div>
 
                 {/* Map + Social Icons */}
@@ -120,9 +120,9 @@ export default function ContactPreview() {
                     {/* Social Icons */}
                     <div className="flex lg:flex-col justify-center items-center gap-6 mb-8 lg:mb-0">
                         {[
-                            { href: "https://instagram.com", Icon: FaInstagram },
-                            { href: "https://facebook.com", Icon: FaFacebookF },
-                            { href: "https://tiktok.com", Icon: FaTiktok },
+                            { href: "https://www.instagram.com/motorent_bovilla/", Icon: FaInstagram },
+                            // { href: "https://facebook.com/motorentbovilla", Icon: FaFacebookF },
+                            { href: "https://www.tiktok.com/@motorent_bovilla", Icon: FaTiktok },
                         ].map(({ href, Icon }, index) => (
                             <a
                                 key={index}

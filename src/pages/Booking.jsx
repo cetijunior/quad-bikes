@@ -82,15 +82,33 @@ export default function BookingForm() {
     // Final submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.agreeToTerms) {
-            // Submit the booking
-            console.log("Booking submitted:", formData);
-            // Here you would typically send the data to your backend
-            alert("Booking submitted successfully!");
-        } else {
+
+        if (!formData.agreeToTerms) {
             setErrors({ ...errors, terms: "You must agree to the terms and conditions" });
+            return;
         }
+
+        const dataToSend = {
+            ...formData,
+            totalPrice: calculatePrice()
+        };
+
+        fetch('/api/sendBooking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataToSend)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log("Server Response:", data);
+                setCurrentStep(4);
+            })
+            .catch(err => {
+                console.error("Failed to submit booking:", err);
+                alert("Something went wrong. Please try again.");
+            });
     };
+
 
     // Set the selected date to today by default on component mount
     useEffect(() => {

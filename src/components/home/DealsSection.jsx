@@ -113,7 +113,7 @@ export default function DealsSection() {
 
                                 <div className="flex justify-between items-center mt-6">
                                     <p className="text-2xl font-bold text-cyan-500">€50 / Rider</p>
-                                    <Link to="/booking">
+                                    <Link to="/contact">
                                         <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg text-sm uppercase transition-all shadow-lg">
                                             Book Now
                                         </button>
@@ -144,7 +144,7 @@ export default function DealsSection() {
                         Booking & Payment Notes
                     </div>
                     <ul className="text-gray-300 space-y-2 text-sm pl-4 list-disc">
-                        <li>Booking must be made in advance</li>
+                        <li>contact must be made in advance</li>
                         <li>Pickup point is private – shared <strong>after confirmation</strong> only</li>
                         <li>Do <strong>not</strong> drive to the site uninvited – no direct entry allowed</li>
                         <li>No deposit needed – <strong>Cash payment on location</strong></li>
@@ -154,7 +154,7 @@ export default function DealsSection() {
 
                 {/* CTA Button */}
                 <motion.div variants={fadeInUp} className="text-center mt-12 group">
-                    <Link to="/booking">
+                    <Link to="/contact">
                         <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold px-10 py-4 rounded-lg uppercase shadow-lg hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto space-x-3">
                             <span>Book Your Adventure</span>
                             <span className="group-hover:translate-x-2 transition-transform">→</span>

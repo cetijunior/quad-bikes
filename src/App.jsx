@@ -9,6 +9,7 @@ import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/booking" element={<Booking />} />
+        {/* <Route path="/booking" element={<Booking />} /> */}
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
+        <Route path="*" element={<NotFoundPage />} />
 
       </Routes>
       <Footer />

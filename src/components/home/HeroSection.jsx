@@ -93,7 +93,7 @@ export default function HeroSection() {
 
                     {/* Action Button */}
                     <div className="flex justify-center mb-16">
-                        <Link to="/booking" className="group">
+                        <Link to="/contact" className="group">
                             <button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-8 py-4 md:px-10 rounded-full text-lg shadow-xl transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
                                 <Calendar size={20} />
                                 <span>Book Your Ride</span>

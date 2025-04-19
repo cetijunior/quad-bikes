@@ -44,7 +44,7 @@ export default function GroupPromo() {
                 </motion.p>
 
                 <motion.div variants={fadeInUp}>
-                    <Link to="/booking">
+                    <Link to="/contact">
                         <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-600 hover:to-cyan-500 text-white font-bold px-10 py-4 rounded-full uppercase text-base md:text-lg shadow-xl hover:scale-105 transition-all duration-300">
                             Book Your Group Ride →
                         </button>

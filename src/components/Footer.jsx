@@ -30,7 +30,7 @@ export default function Footer() {
                             Explore Albania’s wild side with our guided ATV experiences. Scenic routes, thrilling rides, and a team that puts your safety and fun first.
                         </p>
                         <Link
-                            to="/booking"
+                            to="/contact"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg font-medium text-sm shadow-lg hover:translate-y-[-2px] transition-all duration-300"
                         >
                             Book Your Ride
@@ -45,7 +45,7 @@ export default function Footer() {
                             {[
                                 { to: "/", text: "Home" },
                                 { to: "/about", text: "About Us" },
-                                { to: "/booking", text: "Book Now" },
+                                // { to: "/booking", text: "Book Now" },
                                 { to: "/gallery", text: "Gallery" },
                                 { to: "/contact", text: "Contact" },
                             ].map((link) => (
@@ -99,7 +99,7 @@ export default function Footer() {
 
                     {/* Newsletter & Socials */}
                     <div>
-                        <h3 className="text-lg font-semibold mb-6 border-b border-cyan-500/30 pb-2 inline-block">Stay Connected</h3>
+                        {/* <h3 className="text-lg font-semibold mb-6 border-b border-cyan-500/30 pb-2 inline-block">Stay Connected</h3>
 
                         <div className="mb-6">
                             <p className="text-sm text-gray-300 mb-3">Get ride offers & trail updates</p>
@@ -116,13 +116,13 @@ export default function Footer() {
                                     Subscribe
                                 </button>
                             </form>
-                        </div>
+                        </div> */}
 
                         <p className="text-sm text-gray-300 mb-3">Follow us</p>
                         <div className="flex space-x-4">
                             {[
                                 { href: "https://www.instagram.com/motorent_bovilla/", Icon: FaInstagram, bg: "bg-gradient-to-br from-purple-600 to-pink-500" },
-                                { href: "https://facebook.com/motorentbovilla", Icon: FaFacebookF, bg: "bg-gradient-to-br from-blue-600 to-blue-800" },
+                                // { href: "https://facebook.com/motorentbovilla", Icon: FaFacebookF, bg: "bg-gradient-to-br from-blue-600 to-blue-800" },
                                 { href: "https://www.tiktok.com/@motorent_bovilla", Icon: FaTiktok, bg: "bg-gradient-to-br from-gray-800 to-black" },
                             ].map(({ href, Icon, bg }, i) => (
                                 <a key={i} href={href} target="_blank" rel="noreferrer"

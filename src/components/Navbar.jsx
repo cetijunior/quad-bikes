@@ -46,7 +46,7 @@ export default function Navbar() {
 
     const navLinks = [
         { to: "/", text: ("Home"), icon: <FaHome /> },
-        { to: "/booking", text: ("Booking"), icon: <FaCalendarAlt /> },
+        // { to: "/booking", text: ("Booking"), icon: <FaCalendarAlt /> },
         { to: "/about", text: ("About"), icon: <FaInfoCircle /> },
         { to: "/gallery", text: ("Gallery"), icon: <FaImages /> },
         { to: "/contact", text: ("Contact"), icon: <FaEnvelope /> },
@@ -79,7 +79,7 @@ export default function Navbar() {
                             />
                         </div>
                         <h1 className="text-lg md:text-3xl font-extrabold tracking-wide uppercase bg-gradient-to-r from-cyan-500 to-blue-600 text-transparent bg-clip-text hover:from-blue-600 hover:to-cyan-500 transition duration-500">
-                            Moto <soan className="md:hidden sm:visible" >Rent</soan> Bovilla
+                            Moto <span className="md:hidden sm:visible" >Rent</span> Bovilla
                         </h1>
                     </Link>
 
