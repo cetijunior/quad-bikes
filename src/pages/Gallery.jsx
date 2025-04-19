@@ -155,7 +155,7 @@ export default function Gallery() {
             <div className="space-y-24">
                 {renderMediaGrid("Trail Adventures", FaMountain, trailImages)}
                 {renderMediaGrid("Bovilla Views", FaCamera, bovillaMedia)}
-                {renderMediaGrid("Quad Machines", FaBiking, quadImages)}
+                {renderMediaGrid("Quad Bikes", FaBiking, quadImages)}
                 {renderVideoGrid()}
             </div>
 

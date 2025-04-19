@@ -7,7 +7,8 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
-// ... other imports
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+
 
       </Routes>
       <Footer />

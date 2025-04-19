@@ -71,15 +71,15 @@ export default function Navbar() {
                         className="flex items-center space-x-3"
                         to="/"
                     >
-                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden shadow-md">
+                        <div className="w-14 h-10 md:w-14 md:h-14 rounded-2xl md:rounded-full overflow-hidden shadow-md">
                             <img
                                 src="/images/logo-motorent.jpg"
                                 alt="Moto Rent Bovilla"
                                 className="w-full h-full object-cover transition-transform hover:animate-spin duration-300"
                             />
                         </div>
-                        <h1 className="text-xl md:text-3xl font-extrabold tracking-wide uppercase bg-gradient-to-r from-cyan-500 to-blue-600 text-transparent bg-clip-text hover:from-blue-600 hover:to-cyan-500 transition duration-500">
-                            Moto Rent Bovilla
+                        <h1 className="text-lg md:text-3xl font-extrabold tracking-wide uppercase bg-gradient-to-r from-cyan-500 to-blue-600 text-transparent bg-clip-text hover:from-blue-600 hover:to-cyan-500 transition duration-500">
+                            Moto <soan className="md:hidden sm:visible" >Rent</soan> Bovilla
                         </h1>
                     </Link>
 

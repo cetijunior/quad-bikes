@@ -9,7 +9,8 @@ import {
     FaFacebookF,
     FaTiktok,
     FaQuoteRight,
-    FaRoute
+    FaRoute,
+    FaMotorcycle
 } from "react-icons/fa";
 
 const fadeInUp = {
@@ -23,20 +24,31 @@ const staggerChildren = {
 
 export default function Contact() {
     return (
-        <div className="relative bg-gradient-to-b from-orange-50 via-white to-orange-100 min-h-screen pt-24 pb-12">
+        <div className="relative bg-gray-950 min-h-screen pt-24 pb-12 text-gray-300">
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10">
+                <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-cyan-500 filter blur-3xl"></div>
+                <div className="absolute bottom-40 right-20 w-96 h-96 rounded-full bg-blue-600 filter blur-3xl"></div>
+            </div>
+
             <motion.section
                 initial="hidden"
                 animate="visible"
                 variants={staggerChildren}
-                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
             >
                 {/* Header */}
-                <motion.h1
-                    variants={fadeInUp}
-                    className="text-5xl md:text-6xl font-extrabold uppercase text-center text-orange-500 mb-12 tracking-tight"
-                >
-                    Contact Us
-                </motion.h1>
+                <motion.div variants={fadeInUp} className="mb-16 text-center">
+                    <div className="flex justify-center mb-4">
+                        <FaMotorcycle className="text-cyan-500 text-4xl" />
+                    </div>
+                    <h1 className="text-5xl md:text-6xl font-extrabold text-cyan-500 mb-3 tracking-tight">
+                        CONTACT US
+                    </h1>
+                    <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+                        Ready for an adventure? Reach out to Moto Rent Bovilla today.
+                    </p>
+                </motion.div>
 
                 {/* Main Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -45,110 +57,130 @@ export default function Contact() {
                         variants={fadeInUp}
                         className="lg:col-span-2 space-y-10"
                     >
-                        {/* Contact Info Box */}
-                        <div className="bg-orange-50 p-6 rounded-xl shadow-md space-y-6">
-                            <h2 className="text-2xl font-bold text-gray-800">Get in Touch</h2>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-4">
-                                    <FaPhone className="text-orange-500 text-xl mt-1" />
+                        {/* Contact Info Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 hover:shadow-cyan-900/30 hover:shadow-lg transition-all">
+                                <div className="flex items-center mb-4">
+                                    <div className="p-3 bg-gray-800 rounded-lg mr-4">
+                                        <FaPhone className="text-cyan-500 text-xl" />
+                                    </div>
                                     <div>
-                                        <p className="font-semibold text-orange-500">Phone</p>
+                                        <p className="font-medium text-gray-300">Call Us</p>
                                         <a
                                             href="tel:+355694445555"
-                                            className="text-gray-700 hover:text-orange-400 transition"
+                                            className="text-xl font-bold text-white hover:text-cyan-400 transition"
                                         >
                                             +355 69 444 5555
                                         </a>
                                     </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <FaEnvelope className="text-orange-500 text-xl mt-1" />
+                                </div>
+                            </div>
+
+                            <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 hover:shadow-cyan-900/30 hover:shadow-lg transition-all">
+                                <div className="flex items-center mb-4">
+                                    <div className="p-3 bg-gray-800 rounded-lg mr-4">
+                                        <FaEnvelope className="text-cyan-500 text-xl" />
+                                    </div>
                                     <div>
-                                        <p className="font-semibold text-orange-500">Email</p>
+                                        <p className="font-medium text-gray-300">Email Us</p>
                                         <a
-                                            href="mailto:info@bovillaquads.com"
-                                            className="text-gray-700 hover:text-orange-400 transition"
+                                            href="mailto:info@motorentbovilla.com"
+                                            className="text-xl font-bold text-white hover:text-cyan-400 transition"
                                         >
-                                            info@bovillaquads.com
+                                            info@motorentbovilla.com
                                         </a>
                                     </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <FaWhatsapp className="text-green-500 text-xl mt-1" />
+                                </div>
+                            </div>
+
+                            <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 hover:shadow-cyan-900/30 hover:shadow-lg transition-all">
+                                <div className="flex items-center mb-4">
+                                    <div className="p-3 bg-gray-800 rounded-lg mr-4">
+                                        <FaWhatsapp className="text-cyan-500 text-xl" />
+                                    </div>
                                     <div>
-                                        <p className="font-semibold text-orange-500">WhatsApp</p>
+                                        <p className="font-medium text-gray-300">WhatsApp</p>
                                         <a
                                             href="https://wa.me/355694445555"
-                                            className="text-gray-700 hover:text-green-400 transition"
+                                            className="text-xl font-bold text-white hover:text-cyan-400 transition"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             Chat Now
                                         </a>
                                     </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <FaMapMarkerAlt className="text-orange-500 text-xl mt-1" />
+                                </div>
+                            </div>
+
+                            <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 hover:shadow-cyan-900/30 hover:shadow-lg transition-all">
+                                <div className="flex items-center mb-4">
+                                    <div className="p-3 bg-gray-800 rounded-lg mr-4">
+                                        <FaMapMarkerAlt className="text-cyan-500 text-xl" />
+                                    </div>
                                     <div>
-                                        <p className="font-semibold text-orange-500">Location</p>
-                                        <p className="text-gray-700">
+                                        <p className="font-medium text-gray-300">Find Us</p>
+                                        <p className="text-xl font-bold text-white">
                                             Zall Herr, Bovilla Reservoir, Albania
                                         </p>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Contact Form Box */}
-                        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+                        <div className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-800">
+                            <h2 className="text-2xl font-bold text-cyan-500 mb-6">
                                 Send Us a Message
                             </h2>
-                            <form className="space-y-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Name</label>
-                                    <input
-                                        type="text"
-                                        className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                                        placeholder="Your Name"
-                                    />
+                            <form className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                        <input
+                                            type="text"
+                                            className="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:ring-cyan-500 focus:border-cyan-500 text-white placeholder-gray-500"
+                                            placeholder="Your Name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                        <input
+                                            type="email"
+                                            className="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:ring-cyan-500 focus:border-cyan-500 text-white placeholder-gray-500"
+                                            placeholder="Your Email"
+                                        />
+                                    </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700">Email</label>
-                                    <input
-                                        type="email"
-                                        className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                                        placeholder="Your Email"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Message</label>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
                                     <textarea
-                                        rows="4"
-                                        className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
+                                        rows="5"
+                                        className="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:ring-cyan-500 focus:border-cyan-500 text-white placeholder-gray-500"
                                         placeholder="How can we help you?"
                                     ></textarea>
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-orange-500 text-white font-bold py-3 rounded-full hover:bg-orange-600 transition shadow-lg"
+                                    className="w-full py-4 px-6 text-white font-bold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 transition shadow-lg flex items-center justify-center"
                                 >
-                                    Send Message
+                                    <span>Send Message</span>
+                                    <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
                                 </button>
                             </form>
                         </div>
                     </motion.div>
 
                     {/* Right: Additional Content */}
-                    <motion.div variants={fadeInUp} className="space-y-10 lg:sticky lg:top-32 h-fit">
-
+                    <motion.div variants={fadeInUp} className="space-y-8 lg:sticky lg:top-32 h-fit">
                         {/* Google Map */}
-                        <div className="overflow-hidden rounded-xl shadow-md border border-orange-100">
+                        <div className="overflow-hidden rounded-xl shadow-lg border border-gray-800">
                             <iframe
                                 title="Bovilla Map"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.4831043580048!2d19.866340299999997!3d41.4452401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351cb2a52d90eeb%3A0x4262f3b705a16a34!2sBovilla%20Reservoir!5e1!3m2!1sen!2smt!4v1742914402953!5m2!1sen!2smt"
                                 width="100%"
-                                height="300"
+                                height="250"
                                 allowFullScreen=""
                                 loading="lazy"
                                 className="w-full border-0"
@@ -156,50 +188,75 @@ export default function Contact() {
                         </div>
 
                         {/* Adventure Highlight */}
-                        <div className="bg-orange-50 p-6 rounded-xl shadow-md">
-                            <div className="flex items-center mb-4">
-                                <FaQuoteRight className="text-orange-500 text-2xl mr-3" />
-                                <h3 className="text-xl font-bold text-gray-800">Why Choose Us</h3>
+                        <div className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-800 relative overflow-hidden">
+                            <div className="absolute inset-0 opacity-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" className="w-full h-full">
+                                    <path fill="#0891B2" d="M42.7,-51.1C52.9,-41.9,57.2,-25.7,59.4,-9.7C61.5,6.3,61.5,22.2,53.7,33.5C45.9,44.8,30.3,51.4,13.7,58.3C-2.9,65.2,-20.4,72.3,-34.7,67.7C-49,63.1,-60.1,46.7,-64.5,29.3C-68.9,11.9,-66.6,-6.5,-60.1,-22.6C-53.6,-38.7,-42.9,-52.5,-29.4,-60.1C-15.9,-67.7,0.4,-68.9,15.2,-64C30,-59.1,32.5,-60.3,42.7,-51.1Z" transform="translate(100 100)" />
+                                </svg>
                             </div>
-                            <p className="text-gray-700 italic">
-                                "Discover the thrill of Bovilla Reservoir with our expert-guided quad adventures. Unforgettable experiences await!"
-                            </p>
+                            <div className="relative z-10">
+                                <div className="flex items-center mb-4">
+                                    <FaQuoteRight className="text-cyan-500 text-2xl mr-3" />
+                                    <h3 className="text-xl font-bold text-white">Why Choose Us</h3>
+                                </div>
+                                <p className="text-gray-300 italic">
+                                    "Experience the thrill of Bovilla Reservoir with our premium motorcycle rentals. Expert guides, top-notch vehicles, and breathtaking routes await you!"
+                                </p>
+                            </div>
                         </div>
 
                         {/* Routes Highlight */}
-                        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                            <div className="flex items-center mb-4">
-                                <FaRoute className="text-orange-500 text-2xl mr-3" />
-                                <h3 className="text-xl font-bold text-gray-800">Our Routes</h3>
+                        <div className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-800">
+                            <div className="flex items-center mb-5">
+                                <FaRoute className="text-cyan-500 text-2xl mr-3" />
+                                <h3 className="text-xl font-bold text-white">Popular Routes</h3>
                             </div>
-                            <ul className="space-y-2 text-gray-700">
-                                <li className="flex items-center">
-                                    <span className="w-2 h-2 bg-orange-500 mr-2 rounded-full"></span>
-                                    Beginner Trail
+                            <ul className="space-y-4">
+                                <li className="flex items-center p-3 bg-gray-800 rounded-lg hover:bg-gray-800/80 transition cursor-pointer">
+                                    <span className="w-3 h-3 bg-green-500 mr-3 rounded-full"></span>
+                                    <span className="font-medium">Beginner Trail</span>
+                                    <span className="ml-auto text-cyan-500">1.5 hrs</span>
                                 </li>
-                                <li className="flex items-center">
-                                    <span className="w-2 h-2 bg-orange-500 mr-2 rounded-full"></span>
-                                    Intermediate Challenge
+                                <li className="flex items-center p-3 bg-gray-800 rounded-lg hover:bg-gray-800/80 transition cursor-pointer">
+                                    <span className="w-3 h-3 bg-yellow-500 mr-3 rounded-full"></span>
+                                    <span className="font-medium">Intermediate Challenge</span>
+                                    <span className="ml-auto text-cyan-500">3 hrs</span>
                                 </li>
-                                <li className="flex items-center">
-                                    <span className="w-2 h-2 bg-orange-500 mr-2 rounded-full"></span>
-                                    Advanced Expedition
+                                <li className="flex items-center p-3 bg-gray-800 rounded-lg hover:bg-gray-800/80 transition cursor-pointer">
+                                    <span className="w-3 h-3 bg-red-500 mr-3 rounded-full"></span>
+                                    <span className="font-medium">Advanced Expedition</span>
+                                    <span className="ml-auto text-cyan-500">5 hrs</span>
                                 </li>
                             </ul>
                         </div>
 
                         {/* Social Links */}
-                        <div className="bg-orange-50 p-6 rounded-xl shadow-md text-center">
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Connect with Us</h3>
-                            <div className="flex justify-center gap-6 text-orange-500 text-3xl">
-                                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-orange-400">
-                                    <FaInstagram />
+                        <div className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-800">
+                            <h3 className="text-xl font-bold text-white mb-5 text-center">Connect With Us</h3>
+                            <div className="flex justify-center gap-4">
+                                <a
+                                    href="https://instagram.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
+                                >
+                                    <FaInstagram className="text-cyan-500 text-2xl" />
                                 </a>
-                                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-orange-400">
-                                    <FaFacebookF />
+                                <a
+                                    href="https://facebook.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
+                                >
+                                    <FaFacebookF className="text-cyan-500 text-2xl" />
                                 </a>
-                                <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:text-orange-400">
-                                    <FaTiktok />
+                                <a
+                                    href="https://tiktok.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
+                                >
+                                    <FaTiktok className="text-cyan-500 text-2xl" />
                                 </a>
                             </div>
                         </div>

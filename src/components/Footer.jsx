@@ -141,8 +141,8 @@ export default function Footer() {
                         © {new Date().getFullYear()} Moto Rent Bovilla. All rights reserved.
                     </p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <Link to="/privacy" className="hover:text-cyan-400">Privacy Policy</Link>
-                        <Link to="/terms" className="hover:text-cyan-400">Terms & Conditions</Link>
+                        <Link to="/privacy-policy" className="hover:text-cyan-400">Privacy Policy</Link>
+                        <Link to="/terms-and-conditions" className="hover:text-cyan-400">Terms & Conditions</Link>
                     </div>
                 </div>
             </div>

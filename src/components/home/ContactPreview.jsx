@@ -8,6 +8,7 @@ import {
     FaCalendarAlt,
     FaEnvelope,
     FaPhoneAlt,
+    FaMotorcycle
 } from "react-icons/fa";
 
 const fadeInUp = {
@@ -22,19 +23,19 @@ const staggerChildren = {
 export default function ContactPreview() {
     const contactMethods = [
         {
-            icon: <FaWhatsapp className="text-green-500 text-2xl" />,
+            icon: <FaWhatsapp className="text-cyan-500 text-2xl" />,
             text: "WhatsApp",
             href: "https://wa.me/355694445555",
         },
         {
-            icon: <FaPhoneAlt className="text-orange-500 text-2xl" />,
+            icon: <FaPhoneAlt className="text-cyan-500 text-2xl" />,
             text: "Call Us",
             href: "tel:+355694445555",
         },
         {
-            icon: <FaEnvelope className="text-orange-500 text-2xl" />,
+            icon: <FaEnvelope className="text-cyan-500 text-2xl" />,
             text: "Email",
-            href: "mailto:info@quadadventures.com",
+            href: "mailto:info@motorentbovilla.com",
         },
     ];
 
@@ -44,20 +45,29 @@ export default function ContactPreview() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerChildren}
-            className="py-20 px-4 md:px-16 bg-white"
+            className="py-20 px-4 md:px-16 bg-white text-gray-700 relative overflow-hidden"
         >
-            <motion.div variants={fadeInUp} className="mx-auto">
+            {/* Background subtle texture */}
+            <div className="absolute inset-0 z-0 opacity-5">
+                <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-cyan-500 filter blur-3xl"></div>
+                <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-blue-600 filter blur-3xl"></div>
+            </div>
+
+            <motion.div variants={fadeInUp} className="mx-auto relative z-10">
+                <div className="flex justify-center mb-4">
+                    <FaMotorcycle className="text-cyan-500 text-3xl" />
+                </div>
                 <motion.h2
                     variants={fadeInUp}
-                    className="text-4xl font-bold text-center mb-6 uppercase text-orange-600"
+                    className="text-4xl font-bold text-center mb-6 uppercase text-cyan-500"
                 >
-                    Ready to Roll?
+                    Ready to Ride?
                 </motion.h2>
                 <motion.p
                     variants={fadeInUp}
-                    className="text-center text-gray-700 mb-12 max-w-xl mx-auto"
+                    className="text-center text-gray-600 mb-12 max-w-xl mx-auto"
                 >
-                    Adventure awaits! Get in touch with us to book your next thrilling Quad experience at Bovilla Reservoir.
+                    Adventure awaits! Get in touch with us to book your next thrilling motorcycle experience at Bovilla Reservoir.
                 </motion.p>
 
                 {/* Contact Methods */}
@@ -71,9 +81,11 @@ export default function ContactPreview() {
                             href={method.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-gray-50 hover:bg-orange-50 border border-orange-100 rounded-lg p-6 flex flex-col items-center space-y-4 transition-all duration-300 hover:shadow-md"
+                            className="bg-gray-50 hover:bg-cyan-50 border border-gray-200 rounded-lg p-6 flex flex-col items-center space-y-4 transition-all duration-300 hover:shadow-lg group"
                         >
-                            {method.icon}
+                            <div className="transform group-hover:scale-110 transition-transform duration-300">
+                                {method.icon}
+                            </div>
                             <span className="text-gray-800 font-semibold">{method.text}</span>
                         </a>
                     ))}
@@ -86,14 +98,14 @@ export default function ContactPreview() {
                 >
                     <a
                         href="/booking"
-                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-full shadow-lg flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105"
+                        className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold px-8 py-3 rounded-lg shadow-lg flex items-center justify-center space-x-2 transition-all duration-300 hover:shadow-md"
                     >
                         <FaCalendarAlt />
                         <span>Book Your Adventure</span>
                     </a>
                     <a
                         href="/contact"
-                        className="bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-50 font-bold px-8 py-3 rounded-full shadow-md flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105"
+                        className="bg-white border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-50 font-bold px-8 py-3 rounded-lg shadow-md flex items-center justify-center space-x-2 transition-all duration-300"
                     >
                         <FaEnvelope />
                         <span>Contact Us</span>
@@ -106,7 +118,7 @@ export default function ContactPreview() {
                     className="flex flex-col lg:flex-row items-center justify-center gap-10"
                 >
                     {/* Social Icons */}
-                    <div className="flex lg:flex-col justify-center items-center gap-6 text-orange-500 mb-8 lg:mb-0">
+                    <div className="flex lg:flex-col justify-center items-center gap-6 mb-8 lg:mb-0">
                         {[
                             { href: "https://instagram.com", Icon: FaInstagram },
                             { href: "https://facebook.com", Icon: FaFacebookF },
@@ -117,22 +129,24 @@ export default function ContactPreview() {
                                 href={href}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="transform hover:scale-110 hover:text-orange-600 transition-all duration-200"
+                                className="bg-gray-50 p-3 rounded-lg text-cyan-500 transform hover:scale-110 hover:text-cyan-600 hover:bg-cyan-50 transition-all duration-200 shadow-sm"
                             >
-                                <Icon className="text-3xl" />
+                                <Icon className="text-2xl" />
                             </a>
                         ))}
                     </div>
 
                     {/* Google Map */}
-                    <motion.iframe
-                        title="Bovilla Mini Map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.4831043580048!2d19.866340299999997!3d41.4452401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351cb2a52d90eeb%3A0x4262f3b705a16a34!2sBovilla%20Reservoir!5e1!3m2!1sen!2smt!4v1742914402953!5m2!1sen!2smt"
-                        width="100%"
-                        height="300"
-                        className="rounded-xl w-full shadow-lg mx-auto block"
-                        loading="lazy"
-                    />
+                    <motion.div className="w-full max-w-2xl rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                        <iframe
+                            title="Bovilla Mini Map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.4831043580048!2d19.866340299999997!3d41.4452401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351cb2a52d90eeb%3A0x4262f3b705a16a34!2sBovilla%20Reservoir!5e1!3m2!1sen!2smt!4v1742914402953!5m2!1sen!2smt"
+                            width="100%"
+                            height="300"
+                            className="w-full"
+                            loading="lazy"
+                        />
+                    </motion.div>
                 </motion.div>
             </motion.div>
         </motion.section>

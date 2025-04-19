@@ -1,134 +1,266 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import heroImage from "/rides/I6.jpg";
-import { createPortal } from "react-dom";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Video from "yet-another-react-lightbox/plugins/video";
+import { ChevronRight, ChevronLeft, Camera, Play, Calendar } from "lucide-react";
 
 const imageData = Array.from({ length: 10 }, (_, i) => ({
     id: `I${i + 1}`,
     src: `/rides/I${i + 1}.jpg`,
-    height: 400,
+    alt: `ATV Tour Photo ${i + 1}`
 }));
 
 const videoData = Array.from({ length: 10 }, (_, i) => ({
     id: `V${i + 1}`,
-    src: `/videos/V${i + 1}.mp4`,
-    height: 400,
+    type: "video",
+    poster: `/rides/I${i + 1}.jpg`, // Using images as video thumbnails
+    sources: [
+        {
+            src: `/videos/V${i + 1}.mp4`,
+            type: "video/mp4"
+        }
+    ]
 }));
 
-function FullModal({ isOpen, content, onClose }) {
-    if (!isOpen) return null;
-    return createPortal(
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[9999]">
-            <div className="relative max-w-full max-h-full p-4">
-                <button onClick={onClose} className="absolute top-4 right-4 text-black text-5xl mr-3 font-bold z-10">×</button>
-                {content.type === "image" ? (
-                    <img src={content.src} alt="Full View" className="max-h-[80vh] max-w-[90vw] object-contain" />
-                ) : (
-                    <video
-                        src={content.src}
-                        controls
-                        autoPlay
-                        muted
-                        playsInline
-                        className="max-h-[80vh] max-w-[90vw] object-contain"
-                    />
-                )}
-            </div>
-        </div>,
-        document.body
-    );
-}
-
 export default function HeroSection() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [modalContent, setModalContent] = useState({});
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+    const [contentType, setContentType] = useState("images"); // "images" or "videos"
+    const [isMobile, setIsMobile] = useState(false);
 
-    const openModal = (type, src) => {
-        setModalContent({ type, src });
-        setModalOpen(true);
+    const imagesTrackRef = useRef(null);
+    const videosTrackRef = useRef(null);
+
+    // Check if mobile based on screen width
+    useEffect(() => {
+        const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkIfMobile();
+        window.addEventListener("resize", checkIfMobile);
+
+        return () => window.removeEventListener("resize", checkIfMobile);
+    }, []);
+
+    const openImageLightbox = (index) => {
+        setContentType("images");
+        setLightboxIndex(index);
+        setLightboxOpen(true);
+    };
+
+    const openVideoLightbox = (index) => {
+        setContentType("videos");
+        setLightboxIndex(index);
+        setLightboxOpen(true);
+    };
+
+    const scroll = (ref, direction) => {
+        if (ref.current) {
+            const scrollAmount = direction === "left" ? -300 : 300;
+            ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        }
     };
 
     return (
         <section className="relative bg-black text-white overflow-hidden">
-            {/* Background */}
+            {/* Background with parallax effect */}
             <div className="absolute inset-0 z-0">
-                <img src={heroImage} className="w-full h-full object-cover opacity-50" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+                <img
+                    src={heroImage}
+                    className="w-full h-full object-cover opacity-40"
+                    alt="ATV tour background"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
             </div>
 
             {/* Main Content */}
-            <div className="relative z-10 container mx-auto px-4 mt-10 py-20">
-                <h1 className="text-5xl md:text-7xl text-center font-black text-white mb-4">
-                    Moto Rent <span className="text-cyan-400">Bovilla</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-center text-gray-200 max-w-2xl mx-auto mb-10">
-                    ATV Tours Through Bovilla's Wildest Trails.<br />
-                    <span className="text-cyan-300 font-medium">Adrenaline, views, and mud included.</span>
-                </p>
-
-                <div className="flex justify-center mb-12">
-                    <Link to="/booking">
-                        <button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition-all duration-300">
-                            Book Your Ride
-                        </button>
-                    </Link>
-                </div>
-
-                {/* IMAGE Track */}
-                <h2 className="text-center text-cyan-400 text-2xl font-bold mb-4">Experience The Trails</h2>
-
-                <div className="overflow-x-auto scrollbar-hide mb-14">
-                    <div className="flex gap-4 px-4 md:px-12 pb-4">
-                        {imageData.map(({ id, src, height }) => (
-                            <div
-                                key={id}
-                                className="rounded-xl overflow-hidden shadow-lg flex-shrink-0 cursor-pointer"
-                                style={{ height: `${height}px`, minWidth: `${height * 0.7}px` }}
-                                onClick={() => openModal("image", src)}
-                            >
-                                <img src={src} className="w-full h-full object-cover transition-transform hover:scale-105" />
-                            </div>
-                        ))}
+            <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+                <div className="max-w-5xl mx-auto">
+                    {/* Hero Title with animated text */}
+                    <div className="text-center mb-8">
+                        <h1 className="text-5xl md:text-7xl font-black mb-2 animate-fade-in">
+                            Moto Rent <span className="text-cyan-400">Bovilla</span>
+                        </h1>
+                        <div className="h-1 w-24 md:w-32 bg-cyan-500 mx-auto mb-4 rounded-full"></div>
+                        <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+                            ATV Tours Through Bovilla's Wildest Trails.
+                            <span className="block text-cyan-300 font-medium mt-1">Adrenaline, views, and mud included.</span>
+                        </p>
                     </div>
-                </div>
 
-                {/* VIDEO Track */}
-                <h2 className="text-center text-cyan-400 text-2xl font-bold mb-4">Capture The Action</h2>
-                <div className="overflow-x-auto scrollbar-hide mb-10">
-                    <div className="flex gap-4 px-4 md:px-12 pb-4">
-                        {videoData.map(({ id, src, height }) => (
-                            <div
-                                key={id}
-                                className="rounded-xl overflow-hidden shadow-xl flex-shrink-0 relative cursor-pointer"
-                                style={{ height: `${height}px`, minWidth: `${height * 0.7}px` }}
-                                onClick={() => openModal("video", src)}
-                            >
-                                <video
-                                    src={src}
-                                    muted
-                                    loop
-                                    autoPlay
-                                    playsInline
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                        ))}
+                    {/* Action Button */}
+                    <div className="flex justify-center mb-16">
+                        <Link to="/booking" className="group">
+                            <button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-8 py-4 md:px-10 rounded-full text-lg shadow-xl transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
+                                <Calendar size={20} />
+                                <span>Book Your Ride</span>
+                                <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
+                            </button>
+                        </Link>
                     </div>
-                </div>
 
-                {/* Scroll animation under videos */}
-                <div className="flex justify-center mb-6">
-                    <div className="text-center">
-                        <span className="text-sm text-gray-400">Swipe to explore</span>
-                        <div className="animate-bounce mt-2 w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2 mx-auto">
-                            <div className="w-1 h-2 bg-cyan-400 rounded-full " />
+                    {/* Image Gallery Section */}
+                    <div className="mb-16">
+                        <div className="flex justify-between items-center mb-4 px-2">
+                            <h2 className="text-2xl font-bold text-cyan-400 flex items-center gap-2">
+                                <Camera size={24} className="text-cyan-300" />
+                                <span>Experience The Trails</span>
+                            </h2>
+
+                            {!isMobile && (
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => scroll(imagesTrackRef, "left")}
+                                        className="bg-gray-800/80 hover:bg-cyan-800 p-2 rounded-full transition-colors"
+                                        aria-label="Scroll left"
+                                    >
+                                        <ChevronLeft size={20} />
+                                    </button>
+                                    <button
+                                        onClick={() => scroll(imagesTrackRef, "right")}
+                                        className="bg-gray-800/80 hover:bg-cyan-800 p-2 rounded-full transition-colors"
+                                        aria-label="Scroll right"
+                                    >
+                                        <ChevronRight size={20} />
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="relative">
+                            <div
+                                ref={imagesTrackRef}
+                                className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory hide-scrollbar"
+                            >
+                                {imageData.map((image, index) => (
+                                    <div
+                                        key={image.id}
+                                        className="rounded-xl overflow-hidden shadow-lg flex-shrink-0 snap-start cursor-pointer group"
+                                        style={{ minWidth: isMobile ? "85%" : "300px", height: "350px" }}
+                                        onClick={() => openImageLightbox(index)}
+                                    >
+                                        <div className="relative h-full w-full overflow-hidden">
+                                            <img
+                                                src={image.src}
+                                                alt={image.alt}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+                                                <span className="text-white font-medium">View Full Image</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
+
+                    {/* Video Gallery Section */}
+                    <div className="mb-12">
+                        <div className="flex justify-between items-center mb-4 px-2">
+                            <h2 className="text-2xl font-bold text-cyan-400 flex items-center gap-2">
+                                <Play size={24} className="text-cyan-300" />
+                                <span>Capture The Action</span>
+                            </h2>
+
+                            {!isMobile && (
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => scroll(videosTrackRef, "left")}
+                                        className="bg-gray-800/80 hover:bg-cyan-800 p-2 rounded-full transition-colors"
+                                        aria-label="Scroll left"
+                                    >
+                                        <ChevronLeft size={20} />
+                                    </button>
+                                    <button
+                                        onClick={() => scroll(videosTrackRef, "right")}
+                                        className="bg-gray-800/80 hover:bg-cyan-800 p-2 rounded-full transition-colors"
+                                        aria-label="Scroll right"
+                                    >
+                                        <ChevronRight size={20} />
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="relative">
+                            <div
+                                ref={videosTrackRef}
+                                className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory hide-scrollbar"
+                            >
+                                {videoData.map((video, index) => (
+                                    <div
+                                        key={video.id}
+                                        className="rounded-xl overflow-hidden shadow-xl flex-shrink-0 snap-start cursor-pointer group"
+                                        style={{ minWidth: isMobile ? "85%" : "300px", height: "350px" }}
+                                        onClick={() => openVideoLightbox(index)}
+                                    >
+                                        <div className="relative h-full w-full overflow-hidden">
+                                            <video
+                                                src={video.sources[0].src}
+                                                poster={video.poster}
+                                                muted
+                                                loop
+                                                autoPlay
+                                                playsInline
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="bg-cyan-500/90 rounded-full p-3">
+                                                    <Play size={24} fill="white" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Subtle scroll animation indicator for mobile */}
+                    {isMobile && (
+                        <div className="flex justify-center mb-4">
+                            <div className="text-center">
+                                <span className="text-sm text-gray-400">Swipe to explore</span>
+                                <div className="animate-bounce mt-2 w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2 mx-auto">
+                                    <div className="w-1 h-2 bg-cyan-400 rounded-full" />
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
-            {/* Fullscreen Modal */}
-            <FullModal isOpen={modalOpen} content={modalContent} onClose={() => setModalOpen(false)} />
+            {/* Lightbox for full-screen viewing */}
+            <Lightbox
+                open={lightboxOpen}
+                close={() => setLightboxOpen(false)}
+                index={lightboxIndex}
+                slides={contentType === "images" ? imageData : videoData}
+                plugins={[Video]}
+                controller={{ closeOnBackdropClick: true }}
+            />
+
+            {/* Custom CSS for hiding scrollbars but allowing scroll */}
+            <style jsx>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out forwards;
+        }
+      `}</style>
         </section>
     );
 }
