@@ -6,13 +6,13 @@ import "yet-another-react-lightbox/styles.css";
 import Video from "yet-another-react-lightbox/plugins/video";
 import { ChevronRight, ChevronLeft, Camera, Play, Calendar } from "lucide-react";
 
-const imageData = Array.from({ length: 10 }, (_, i) => ({
+const imageData = Array.from({ length: 13 }, (_, i) => ({
     id: `I${i + 1}`,
     src: `/rides/I${i + 1}.jpg`,
     alt: `ATV Tour Photo ${i + 1}`
 }));
 
-const videoData = Array.from({ length: 10 }, (_, i) => ({
+const videoData = Array.from({ length: 20 }, (_, i) => ({
     id: `V${i + 1}`,
     type: "video",
     poster: `/rides/I${i + 1}.jpg`, // Using images as video thumbnails
@@ -138,15 +138,14 @@ export default function HeroSection() {
                                 {imageData.map((image, index) => (
                                     <div
                                         key={image.id}
-                                        className="rounded-xl overflow-hidden shadow-lg flex-shrink-0 snap-start cursor-pointer group"
-                                        style={{ minWidth: isMobile ? "85%" : "300px", height: "350px" }}
+                                        className="snap-start cursor-pointer group rounded-xl overflow-hidden shadow-lg flex-shrink-0 w-[85vw] sm:w-[300px] h-[350px]"
                                         onClick={() => openImageLightbox(index)}
                                     >
-                                        <div className="relative h-full w-full overflow-hidden">
+                                        <div className="relative w-full h-full">
                                             <img
                                                 src={image.src}
                                                 alt={image.alt}
-                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-xl"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
                                                 <span className="text-white font-medium">View Full Image</span>
@@ -154,6 +153,7 @@ export default function HeroSection() {
                                         </div>
                                     </div>
                                 ))}
+
                             </div>
                         </div>
                     </div>
@@ -194,11 +194,10 @@ export default function HeroSection() {
                                 {videoData.map((video, index) => (
                                     <div
                                         key={video.id}
-                                        className="rounded-xl overflow-hidden shadow-xl flex-shrink-0 snap-start cursor-pointer group"
-                                        style={{ minWidth: isMobile ? "85%" : "300px", height: "350px" }}
+                                        className="snap-start cursor-pointer group rounded-xl overflow-hidden shadow-xl flex-shrink-0 w-[85vw] sm:w-[300px] h-[350px]"
                                         onClick={() => openVideoLightbox(index)}
                                     >
-                                        <div className="relative h-full w-full overflow-hidden">
+                                        <div className="relative w-full h-full">
                                             <video
                                                 src={video.sources[0].src}
                                                 poster={video.poster}
@@ -206,7 +205,7 @@ export default function HeroSection() {
                                                 loop
                                                 autoPlay
                                                 playsInline
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-cover rounded-xl"
                                             />
                                             <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <div className="bg-cyan-500/90 rounded-full p-3">
@@ -216,6 +215,7 @@ export default function HeroSection() {
                                         </div>
                                     </div>
                                 ))}
+
                             </div>
                         </div>
                     </div>

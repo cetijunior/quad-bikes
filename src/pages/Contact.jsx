@@ -67,7 +67,7 @@ export default function Contact() {
                             </div>
 
                             {/* Email */}
-                            <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 w-full">
+                            {/* <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 w-full">
                                 <div className="flex items-center mb-4">
                                     <div className="p-3 bg-gray-800 rounded-lg mr-4">
                                         <FaEnvelope className="text-cyan-500 text-xl" />
@@ -79,7 +79,7 @@ export default function Contact() {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* WhatsApp */}
                             <div className="bg-gray-900 rounded-xl p-6 border-l-4 border-cyan-500 w-full">

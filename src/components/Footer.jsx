@@ -69,12 +69,12 @@ export default function Footer() {
                                 </div>
                                 <a href="tel:+355685776981" className="hover:text-cyan-400">+355 68 577 6981</a>
                             </li>
-                            <li className="flex items-center gap-3">
+                            {/* <li className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center text-cyan-400">
                                     <FaEnvelope />
                                 </div>
                                 <a href="mailto:info@motorentbovilla.com" className="hover:text-cyan-400">info@motorentbovilla.com</a>
-                            </li>
+                            </li> */}
                             <li className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center text-cyan-400">
                                     <FaWhatsapp />

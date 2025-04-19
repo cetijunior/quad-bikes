@@ -33,14 +33,13 @@ const actionVideos = [
     { src: "/videos/V11.mp4", type: "video" },
     { src: "/videos/V12.mp4", type: "video" },
     { src: "/videos/V9.mp4", type: "video" },
-
-
 ];
 
 export default function Gallery() {
     const [open, setOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
     const [lightboxImages, setLightboxImages] = useState([]);
+    const [videoModal, setVideoModal] = useState({ open: false, src: "" });
 
     const openLightbox = (images, index) => {
         const imagesOnly = images.filter((img) => img.type === "image");
@@ -50,6 +49,10 @@ export default function Gallery() {
             setLightboxIndex(imageIndex);
             setOpen(true);
         }
+    };
+
+    const openVideoModal = (src) => {
+        setVideoModal({ open: true, src });
     };
 
     const sectionVariants = {
@@ -83,16 +86,24 @@ export default function Gallery() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {media.map((item, index) => (
                     item.type === "video" ? (
-                        <video
+                        <div
                             key={index}
-                            src={item.src}
-                            muted
-                            loop
-                            autoPlay
-                            playsInline
-                            preload="metadata"
-                            className="rounded-xl w-full h-64 object-cover shadow-lg border border-white/10 hover:border-cyan-400 transition"
-                        />
+                            onClick={() => openVideoModal(item.src)}
+                            className="relative cursor-pointer"
+                        >
+                            <video
+                                src={item.src}
+                                muted
+                                loop
+                                autoPlay
+                                playsInline
+                                preload="metadata"
+                                className="rounded-xl w-full h-64 object-cover shadow-lg border border-white/10 hover:border-cyan-400 transition"
+                            />
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-2xl font-bold opacity-0 hover:opacity-100 transition">
+                                ▶
+                            </div>
+                        </div>
                     ) : (
                         <motion.img
                             key={index}
@@ -123,16 +134,24 @@ export default function Gallery() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {actionVideos.map((vid, index) => (
-                    <video
+                    <div
                         key={index}
-                        src={vid.src}
-                        muted
-                        loop
-                        autoPlay
-                        playsInline
-                        preload="metadata"
-                        className="rounded-xl w-full h-64 object-cover shadow-lg border border-white/10 hover:border-cyan-400 transition"
-                    />
+                        onClick={() => openVideoModal(vid.src)}
+                        className="relative cursor-pointer"
+                    >
+                        <video
+                            src={vid.src}
+                            muted
+                            loop
+                            autoPlay
+                            playsInline
+                            preload="metadata"
+                            className="rounded-xl w-full h-64 object-cover shadow-lg border border-white/10 hover:border-cyan-400 transition"
+                        />
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-2xl font-bold opacity-0 hover:opacity-100 transition">
+                            ▶
+                        </div>
+                    </div>
                 ))}
             </div>
         </motion.div>
@@ -165,6 +184,21 @@ export default function Gallery() {
                 slides={lightboxImages}
                 index={lightboxIndex}
             />
+
+            {/* Video Modal */}
+            {videoModal.open && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+                    onClick={() => setVideoModal({ open: false, src: "" })}
+                >
+                    <video
+                        src={videoModal.src}
+                        controls
+                        autoPlay
+                        className="max-w-3xl w-full max-h-[80vh] rounded-lg border border-white"
+                    />
+                </div>
+            )}
         </div>
     );
 }
