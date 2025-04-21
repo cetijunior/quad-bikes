@@ -6,13 +6,13 @@ import "yet-another-react-lightbox/styles.css";
 import Video from "yet-another-react-lightbox/plugins/video";
 import { ChevronRight, ChevronLeft, Camera, Play, Calendar } from "lucide-react";
 
-const imageData = Array.from({ length: 13 }, (_, i) => ({
+const imageData = Array.from({ length: 10 }, (_, i) => ({
     id: `I${i + 1}`,
     src: `/rides/I${i + 1}.jpg`,
     alt: `ATV Tour Photo ${i + 1}`
 }));
 
-const videoData = Array.from({ length: 20 }, (_, i) => ({
+const videoData = Array.from({ length: 23 }, (_, i) => ({
     id: `V${i + 1}`,
     type: "video",
     poster: `/rides/I${i + 1}.jpg`, // Using images as video thumbnails
@@ -77,7 +77,7 @@ export default function HeroSection() {
             </div>
 
             {/* Main Content */}
-            <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+            <div className="relative z-10 container mx-auto mt-8 px-4 py-16 md:py-24">
                 <div className="max-w-5xl mx-auto">
                     {/* Hero Title with animated text */}
                     <div className="text-center mb-8">

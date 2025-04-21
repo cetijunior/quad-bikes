@@ -60,8 +60,8 @@ export default function Navbar() {
         <>
             <nav
                 className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled
-                    ? "py-2 bg-white/95 backdrop-blur-md shadow-lg "
-                    : "py-3 bg-transparent shadow-md"
+                    ? "py-2 bg-blue-950/20 backdrop-blur-3xl  shadow-lg "
+                    : "py-3 bg-transparent  shadow-md"
                     }`}
             >
                 <div className="mx-auto flex justify-between items-center md:px-10 px-4">
@@ -93,7 +93,7 @@ export default function Navbar() {
                                 className={`flex items-center space-x-2 px-4 py-2 transition-colors duration-200 relative ${isActiveLink(link.to)
                                     ? " text-cyan-500 after:scale-x-100"
                                     : `${scrolled
-                                        ? "text-cyan-500"
+                                        ? "text-white"
                                         : "text-white"
                                     } text-gray-700 hover:text-cyan-500 after:scale-x-0 hover:after:scale-x-100`
                                     } after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-cyan-500 after:bottom-0 after:left-0 after:origin-left after:transition-transform after:duration-300`}
@@ -115,6 +115,11 @@ export default function Navbar() {
                 </div>
             </nav>
 
+
+
+
+
+
             {/* Mobile Drawer with Overlay */}
             <div className={`fixed inset-0 z-40 lg:hidden ${isOpen ? "block" : "hidden"}`}>
                 {/* Backdrop */}
@@ -125,33 +130,12 @@ export default function Navbar() {
 
                 {/* Mobile Menu Panel */}
                 <div
-                    className={`fixed top-0 right-0 w-full max-w-sm h-full bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
-                        } overflow-y-auto flex flex-col`}
+                    className={`fixed top-0 right-0 w-full h-full bg-white shadow-xl transform transition-transform duration-300 ease-in-out 
+                        ${isOpen ? "translate-x-0 mt-16" : " translate-x-full"} overflow-y-auto flex flex-col`}
                 >
-                    {/* Menu Header
-                    <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                        <div className="flex items-center space-x-2">
-                            <div className="w-10 h-10 rounded-full overflow-hidden">
-                                <img
-                                    src="/images/logo-motorent.jpg"
-                                    alt="Logo"
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <h2 className="font-bold text-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-transparent bg-clip-text">
-                                Moto Rent
-                            </h2>
-                        </div>
-                        <button
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            <FaTimes />
-                        </button>
-                    </div> */}
 
                     {/* Menu Content */}
-                    <div className="flex-1 mt-16 overflow-y-auto p-4 space-y-6">
+                    <div className="flex-1 overflow-y-auto p-4 space-y-6">
                         {/* Navigation Links */}
                         <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
                             <h3 className="font-bold text-lg mb-4 px-2 text-cyan-600">Navigation</h3>
@@ -171,6 +155,31 @@ export default function Navbar() {
                                         <span>{link.text}</span>
                                     </Link>
                                 ))}
+                            </div>
+
+                            <div className="relative rounded-xl overflow-hidden p-4 shadow-sm border-4 border-cyan-500 text-center bg-white/80">
+                                {/* Background Image */}
+                                <div className="absolute inset-0 z-0">
+                                    <img
+                                        src="/rides/I4.jpg"
+                                        alt="Viator Background"
+                                        className="w-full h-full object-cover opacity-100 blur-xs"
+                                    />
+                                    <div className="absolute inset-0 bg-white/80" />
+                                </div>
+
+                                {/* Foreground Content */}
+                                <div className="relative z-10">
+                                    <p className="text-md font-semibold text-gray-800 mb-2">Prefer to book with Viator?</p>
+                                    <a
+                                        href="https://www.viator.com/search/5569821P2?mcid=64243"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-2 rounded-full text-sm transition"
+                                    >
+                                        Book on Viator
+                                    </a>
+                                </div>
                             </div>
 
 
@@ -203,24 +212,20 @@ export default function Navbar() {
                                     <span className="font-medium text-gray-800">WhatsApp</span>
                                 </a>
 
-                                {/* <a
-                                    href="mailto:info@bovillaquads.com"
+                                <a
+                                    href="https://maps.app.goo.gl/r3G6PzzQrbDwQZu36"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex items-center gap-3 p-3 rounded-xl bg-white/80 shadow-sm hover:shadow-md transition-all duration-200"
                                 >
                                     <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600">
-                                        <FaEnvelope />
-                                    </div>
-                                    <span className="font-medium text-gray-800">info@bovillaquads.com</span>
-                                </a> */}
-
-                                <div className="flex items-center gap-3 p-3 rounded-xl bg-white/80 shadow-sm">
-                                    <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600">
                                         <FaMapMarkerAlt />
                                     </div>
-                                    <span className="font-medium text-gray-800">Zall Herr, Albania</span>
-                                </div>
+                                    <span className="font-medium text-gray-800">Moto Rent Bovilla</span>
+                                </a>
                             </div>
                         </div>
+
 
                         {/* Social Media */}
                         <div className="flex justify-center gap-4">

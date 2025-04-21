@@ -72,13 +72,15 @@ export default function AboutPage() {
     return (
         <div className="overflow-hidden">
             {/* Hero Section */}
-            <section className="relative pt-20 pb-32 bg-gradient-to-b from-blue-800 to-cyan-600 text-white overflow-hidden">
-                {/* Background Elements */}
+            <section className="relative min-h-screen flex items-center py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white overflow-hidden">
+                {/* Dynamic Background Elements */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    {/* Abstract Shape 1 */}
                     <svg
                         viewBox="0 0 200 200"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="absolute top-0 right-0 w-96 h-96 text-white opacity-10"
+                        className="absolute top-0 right-0 w-96 h-96 text-white opacity-5 animate-pulse"
+                        style={{ animationDuration: '15s' }}
                     >
                         <path
                             fill="currentColor"
@@ -86,41 +88,95 @@ export default function AboutPage() {
                             transform="translate(100 100)"
                         />
                     </svg>
+
+                    {/* Abstract Shape 2 */}
+                    <svg
+                        viewBox="0 0 200 200"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute bottom-0 left-0 w-96 h-96 text-cyan-200 opacity-5 animate-pulse"
+                        style={{ animationDuration: '20s' }}
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M41.3,-51.2C54.4,-42.3,66.5,-29.7,71.2,-14.6C75.9,0.6,73.3,18.3,65.5,32.5C57.8,46.8,44.9,57.6,30.4,62.2C16,66.8,-0.1,65.1,-14.8,60.2C-29.6,55.3,-43,47.2,-54.4,35.6C-65.9,24,-75.4,8.9,-74.8,-6.2C-74.1,-21.2,-63.4,-36.2,-50,-46.6C-36.6,-57.1,-20.6,-63,-4.8,-58.5C11,-54,28.2,-60.1,41.3,-51.2Z"
+                            transform="translate(100 100)"
+                        />
+                    </svg>
                 </div>
 
-                <div className="container mx-auto px-4 relative mt-16 z-10">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                            Our <span className="bg-white text-blue-600 px-2">Story</span>
-                        </h1>
-                        <p className="text-xl opacity-90 mb-10 leading-relaxed">
-                            We started with a love for nature and engines — and built MotoRent Bovilla to give people a real taste of Albania's raw beauty, one ride at a time.
-                        </p>
+                <div className="container mx-auto px-4 pt-10 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        {/* Left Text Content */}
+                        <div className="text-left space-y-8">
+                            <div className="inline-block rounded-full bg-blue-500 bg-opacity-20 px-4 py-1 mb-4 backdrop-blur-sm">
+                                <span className="text-sm font-medium uppercase tracking-wider text-cyan-100">Est. 2023</span>
+                            </div>
 
-                    </div>
+                            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                                Our <span className="relative">
+                                    <span className="relative z-10">Story</span>
+                                    <span className="absolute bottom-1 left-0 w-full h-3 bg-cyan-400 opacity-40 z-0"></span>
+                                </span>
+                            </h1>
 
-                    <motion.div
-                        className="relative mt-12 mx-auto"
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="justify-center flex items-center rounded-2xl overflow-hidden shadow-2xl">
-                            <img
-                                src="/rides/I3.jpg"
-                                alt="Bovilla Quads Adventures"
-                                className="lg:w-3/4 md:w-full sm:w-full object-cover"
-                            />
-                        </div>
-                        <div className="absolute -bottom-6 -right-6 bg-white text-blue-600 p-4 rounded-lg shadow-xl">
-                            <div className="text-center">
-                                <span className="block text-3xl font-bold">2023</span>
-                                <span className="text-sm uppercase tracking-wider">Est.</span>
+                            <p className="text-xl opacity-90 leading-relaxed max-w-lg">
+                                We started with a love for nature and engines — and built MotoRent Bovilla to give people a real taste of Albania's raw beauty, one ride at a time.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4 pt-4">
+                                <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition duration-300 shadow-lg">
+                                    Our Journey
+                                </button>
+                                <button className="bg-transparent border-2 border-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition duration-300">
+                                    View Adventures
+                                </button>
                             </div>
                         </div>
-                    </motion.div>
+
+                        {/* Right Image Section */}
+                        <div className="relative m-10">
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                                <div className="absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-20 group-hover:opacity-10 transition duration-300"></div>
+                                <img
+                                    src="/rides/group.jpg"
+                                    alt="Bovilla Quads Adventure"
+                                    className="w-full object-cover rounded-2xl transform group-hover:scale-105 transition duration-700"
+                                />
+
+                                {/* Image Caption */}
+                                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-blue-900 to-transparent">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                                        <span className="text-sm text-cyan-100 font-medium">Exploring Albania's natural wonders</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Floating Badge */}
+                            <div className="absolute -bottom-6 -right-6 bg-white text-blue-900 p-5 rounded-2xl shadow-xl transform rotate-3 hover:rotate-0 transition duration-300">
+                                <div className="text-center">
+                                    <span className="block text-3xl font-bold">2023</span>
+                                    <span className="text-sm uppercase tracking-wider">Founded</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Scroll Indicator */}
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce" style={{ animationDuration: '2s' }}>
+                    <span className="text-sm text-cyan-100 mb-2">Scroll to explore</span>
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
                 </div>
             </section>
+
+
+
+
+            {/*  */}
+
 
             {/* Our Story Section */}
             <section className="py-20 bg-white">
@@ -178,7 +234,18 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Values Section */}
+
+
+
+            {/* CTA Section */}
+            <GroupPromo />
+
+
+            {/*  */}
+
+
+
+            {/* Values Section
             <section className="py-20 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
@@ -233,7 +300,13 @@ export default function AboutPage() {
                         ))}
                     </motion.div>
                 </div>
-            </section>
+            </section> */}
+
+
+
+            {/*  */}
+
+
 
             {/* What Sets Us Apart */}
             <section className="py-20 bg-white">
@@ -338,10 +411,8 @@ export default function AboutPage() {
             </section>
 
 
-            {/* CTA Section */}
-            <GroupPromo />
 
-            {/* Team Section */}
+            {/* Team Section
             <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
@@ -382,7 +453,7 @@ export default function AboutPage() {
                         ))}
                     </motion.div>
                 </div>
-            </section>
+            </section> */}
 
 
             {/* Testimonials Section */}

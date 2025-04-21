@@ -8,14 +8,15 @@ const trailImages = [
     { src: "/rides/I1.jpg", alt: "Trail 1", type: "image" },
     { src: "/rides/I2.jpg", alt: "Trail 2", type: "image" },
     { src: "/rides/I3.jpg", alt: "Trail 3", type: "image" },
+    { src: "/rides/I6.jpg", alt: "Trail 6", type: "image" },
+    { src: "/rides/I8.jpg", alt: "Trail 8", type: "image" },
+    { src: "/rides/I9.jpg", alt: "Trail 9", type: "image" },
 ];
 
 const bovillaMedia = [
     { src: "/videos/V1.mp4", alt: "Bovilla View 1", type: "video" },
     { src: "/videos/V2.mp4", alt: "Bovilla View 2", type: "video" },
     { src: "/videos/V3.mp4", alt: "Bovilla View 3", type: "video" },
-    { src: "/rides/I6.jpg", alt: "Bovilla Image 1", type: "image" },
-    { src: "/rides/I7.jpg", alt: "Bovilla Image 2", type: "image" },
 ];
 
 const quadImages = [
@@ -32,7 +33,19 @@ const actionVideos = [
     { src: "/videos/V10.mp4", type: "video" },
     { src: "/videos/V11.mp4", type: "video" },
     { src: "/videos/V12.mp4", type: "video" },
-    { src: "/videos/V9.mp4", type: "video" },
+    { src: "/videos/V13.mp4", type: "video" },
+    { src: "/videos/V14.mp4", type: "video" },
+    { src: "/videos/V15.mp4", type: "video" },
+    { src: "/videos/V16.mp4", type: "video" },
+    { src: "/videos/V17.mp4", type: "video" },
+    { src: "/videos/V18.mp4", type: "video" },
+    { src: "/videos/V19.mp4", type: "video" },
+    { src: "/videos/V20.mp4", type: "video" },
+    { src: "/videos/V21.mp4", type: "video" },
+    { src: "/videos/V22.mp4", type: "video" },
+    { src: "/videos/V23.mp4", type: "video" },
+
+
 ];
 
 export default function Gallery() {

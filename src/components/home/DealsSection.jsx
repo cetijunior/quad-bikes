@@ -25,24 +25,24 @@ export default function DealsSection() {
     const deals = [
         {
             title: "Solo Ride",
-            desc: "1 Motorcycle – 1 Hour Ride with Guide",
+            desc: "1 ATV • 1 Hour Tour",
             icon: FaMotorcycle,
-            features: ["Protective Gear", "Beginner Friendly", "Scenic Trails"],
+            features: ["Includes Helmet", "Great for Beginners"],
         },
         {
             title: "Group Ride",
-            desc: "4 Motorcycles – 2 Hour Ride + GoPro Included",
-            bestValue: true,
+            desc: "Up to 4 ATVs • 1.5 Hour Tour",
             icon: FaUsers,
-            features: ["Extended Trails", "Group Discount", "Free GoPro Recording"],
+            features: ["Fun with Friends", "Group Discount"],
         },
         {
             title: "Sunset Ride",
-            desc: "Golden Hour Ride with Drone Footage",
+            desc: "1 ATV • Evening Tour",
             icon: FaSun,
-            features: ["Evening Schedule", "Professional Drone Footage", "Breathtaking Views"],
+            features: ["Golden Hour Views", "Peaceful Trails"],
         },
     ];
+
 
     return (
         <motion.section
@@ -129,28 +129,39 @@ export default function DealsSection() {
                     variants={fadeInUp}
                     className="mt-16 max-w-4xl mx-auto bg-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg p-6 space-y-6 border border-gray-800"
                 >
+                    {/* Age Section */}
                     <div className="flex items-center text-cyan-500 text-lg font-bold mb-2">
                         <FaInfoCircle className="mr-2" />
                         Age Requirements
                     </div>
                     <ul className="text-gray-300 space-y-2 text-sm pl-4 list-disc">
-                        <li><strong>Kids:</strong> 7–14 (Must ride with adult supervision)</li>
-                        <li><strong>Teens:</strong> 15–17 (Guardian signature required)</li>
-                        <li><strong>Adults:</strong> 18+ (Solo ride eligible)</li>
+                        <li><strong>Kids (7–14):</strong> Must ride with an adult.</li>
+                        <li><strong>Teens (15–17):</strong> Guardian signature required.</li>
+                        <li><strong>Adults (18+):</strong> Eligible for solo rides.</li>
                     </ul>
 
+                    {/* Booking Section */}
                     <div className="flex items-center text-cyan-500 text-lg font-bold mt-6 mb-2">
                         <FaMoneyBillWave className="mr-2" />
-                        Booking & Payment Notes
+                        Booking & Payment Info
                     </div>
                     <ul className="text-gray-300 space-y-2 text-sm pl-4 list-disc">
-                        <li>contact must be made in advance</li>
-                        <li>Pickup point is private – shared <strong>after confirmation</strong> only</li>
-                        <li>Do <strong>not</strong> drive to the site uninvited – no direct entry allowed</li>
-                        <li>No deposit needed – <strong>Cash payment on location</strong></li>
-                        <li>Walk-ins are not accepted</li>
+                        <li><strong>Booking in advance is required.</strong></li>
+                        <li>
+                            Pickup location:{" "}
+                            <a
+                                href="https://maps.app.goo.gl/r3G6PzzQrbDwQZu36"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cyan-400 underline hover:text-cyan-300"
+                            >
+                                Moto Rent Bovilla Pickup Point
+                            </a>
+                        </li>                        <li>Please avoid arriving without prior notice — bikes may be fully booked.</li>
+                        <li><strong>No deposit needed:</strong> Cash payment at the location.</li>
                     </ul>
                 </motion.div>
+
 
                 {/* CTA Button */}
                 <motion.div variants={fadeInUp} className="text-center mt-12 group">
