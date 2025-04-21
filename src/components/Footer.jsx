@@ -92,7 +92,12 @@ export default function Footer() {
                                 <div className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center text-cyan-400 mt-1">
                                     <FaMapMarkerAlt />
                                 </div>
-                                Zall Herr, Albania
+                                <a className="hover:text-cyan-500"
+                                    href="https://maps.app.goo.gl/r3G6PzzQrbDwQZu36"
+                                >
+
+                                    Zall Herr, Albania
+                                </a>
                             </li>
                         </ul>
                     </div>
