@@ -139,8 +139,8 @@ export default function ContactPreview() {
                     {/* Google Map */}
                     <motion.div className="w-full max-w-2xl rounded-xl overflow-hidden shadow-lg border border-gray-200">
                         <iframe
-                            title="Bovilla Mini Map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.4831043580048!2d19.866340299999997!3d41.4452401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351cb2a52d90eeb%3A0x4262f3b705a16a34!2sBovilla%20Reservoir!5e1!3m2!1sen!2smt!4v1742914402953!5m2!1sen!2smt"
+                            title="Moto Rent Bovilla"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.1754762773518!2d19.834155812093957!3d41.400534399899094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135033007653f9e3%3A0xa1165c57a4f4f5ef!2sMoto%20Rent%20Bovilla!5e1!3m2!1sen!2smt!4v1745255569619!5m2!1sen!2smt"
                             width="100%"
                             height="300"
                             className="w-full"
