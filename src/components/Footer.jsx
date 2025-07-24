@@ -141,6 +141,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
+                {/* Bottom Section */}
                 <div className="border-t border-blue-800/50 mt-12 pt-8 text-center text-gray-400 text-sm flex flex-col md:flex-row justify-between items-center">
                     <p>
                         © {new Date().getFullYear()} Moto Rent Bovilla. All rights reserved.
@@ -150,6 +151,21 @@ export default function Footer() {
                         <Link to="/terms-and-conditions" className="hover:text-cyan-400">Terms & Conditions</Link>
                     </div>
                 </div>
+
+                <a
+                    href="https://ca-webservices.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2  hover:underline"
+                >
+                    <img
+                        src="/images/CALogo.png"
+                        alt="CA Web Services Logo"
+                        className="size-12 animate-spin hover:animate-none object-contain"
+                    />
+                    Created by ca-webservices.com
+                </a>
+
             </div>
         </footer>
     );
